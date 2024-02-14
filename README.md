@@ -1,7 +1,6 @@
 This application requires Python and Flask to be installed.
 
-https://www.python.org/downloads/
-https://flask.palletsprojects.com/en/3.0.x/installation/#python-version
+https://www.python.org/downloads/ | https://flask.palletsprojects.com/en/3.0.x/installation/#python-version
 
 Items are added to the bucket list by clicking on the buttons.  Running totals are kept 
 for the weight in pz and the vendor prices. The vendor prices used are the lowest possible 
