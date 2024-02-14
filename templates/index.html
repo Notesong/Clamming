@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorizonXI Clamming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .button {
+            min-width: 175px;
+            margin: 2px;
+            padding: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Horizon XI Clamming
+            <form action="/reset" method="POST">
+                <input type="submit" value="Empty Bucket">
+            </form>
+        </h1>
+        <div class="button-container">
+            {% for button in buttons %}
+                <form action="/add_item" method="POST">
+                    <button class="button" type="submit" name="button_name" value="{{ button['name'] }}">
+                        {{ button['name'] }}
+                    </button>
+                </form>
+            {% endfor %}
+        </div>
+        <h2>Total Weight: {{ total_weight }}pz | Total Price*: {{ total_price }}g</h2>
+        <h2>Items in Bucket:</h2>
+        <ul>
+            {% for button in clicked_buttons %}
+                <li>{{ button }}</li>
+            {% endfor %}
+        </ul>
+        <p>* Total Price is based the minimum vendor value stated in the <a href="https://horizonffxi.wiki/Category:Clamming">HorizonXI Wiki Clamming page</a>.  If an item has no vendor value, its value is considered to be '0', like the Goblin items.  The item can still have value in the Auction House or in a bazzar.</p>
+        <p>The values included in this calculator are correct as of 2/13/2024</p>
+    </div>
+</body>
+</html>
